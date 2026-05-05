@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5. Sınıf Matematik Soru Bankası | Maarif Modeli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF8E7;
+    --ink: #1F2937;
+    --ink-soft: #4B5563;
+    --paper: #FFFFFF;
+    --primary: #FF6B6B;
+    --primary-dark: #E63946;
+    --secondary: #4ECDC4;
+    --accent: #FFD93D;
+    --purple: #A78BFA;
+    --green: #6BCB77;
+    --red: #FF5252;
+    --easy: #6BCB77;
+    --medium: #FFA94D;
+    --hard: #FF6B6B;
+    --shadow: rgba(31, 41, 55, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    background-image: 
+      radial-gradient(circle at 20% 10%, rgba(255, 217, 61, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(78, 205, 196, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.08) 0%, transparent 50%);
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem;
+    position: relative;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--accent);
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 .accent {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--primary);
+  }
+
+  .subtitle {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .doodle {
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0.4;
+    pointer-events: none;
+    animation: float 4s ease-in-out infinite;
+  }
+  .doodle.d1 { top: 1rem; left: 5%; animation-delay: 0s; }
+  .doodle.d2 { top: 3rem; right: 8%; animation-delay: 1s; }
+  .doodle.d3 { top: 8rem; left: 12%; animation-delay: 2s; font-size: 2rem; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  /* PROGRESS */
+  .progress-card {
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem auto;
+    max-width: 800px;
+    box-shadow: 5px 5px 0 var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .progress-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .progress-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .progress-stat.green .num { color: var(--green); }
+  .progress-stat.red .num { color: var(--red); }
+  .progress-stat.yellow .num { color: var(--medium); }
+
+  .reset-btn {
+    margin-left: auto;
+    background: transparent;
+    border: 2px solid var(--ink);
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .reset-btn:hover { background: var(--ink); color: var(--accent); }
+
+  /* KAZANIM GRID */
+  .kazanim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .kazanim-card {
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 5px 5px 0 var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kazanim-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .kazanim-card.completed {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  }
+
+  .kazanim-card.completed::after {
+    content: '✓';
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 28px;
+    height: 28px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+
+  .kazanim-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+  .kazanim-card[data-area="sayilar"] .kazanim-tag { background: var(--primary); }
+  .kazanim-card[data-area="islemler"] .kazanim-tag { background: var(--purple); }
+  .kazanim-card[data-area="geometri"] .kazanim-tag { background: var(--secondary); }
+  .kazanim-card[data-area="olcme"] .kazanim-tag { background: var(--medium); }
+  .kazanim-card[data-area="veri"] .kazanim-tag { background: var(--green); }
+  .kazanim-card[data-area="olasilik"] .kazanim-tag { background: #FF8FB1; }
+
+  .kazanim-code {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .kazanim-title {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(31, 41, 55, 0.6);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 100;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--bg);
+    max-width: 720px;
+    width: 100%;
+    border: 3px solid var(--ink);
+    border-radius: 24px;
+    padding: 1.75rem;
+    margin: 2rem 0;
+    box-shadow: 8px 8px 0 var(--ink);
+    position: relative;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.2s;
+    z-index: 5;
+  }
+  .close-btn:hover { background: var(--primary); color: white; }
+
+  .modal-header {
+    border-bottom: 2px dashed var(--ink-soft);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    padding-right: 3rem;
+  }
+
+  .modal-code {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+
+  .modal-title {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+  }
+
+  /* MODAL SCORE */
+  .modal-score {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 14px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .modal-score .score-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    color: var(--accent);
+  }
+
+  /* QUESTION CARD */
+  .question {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .difficulty-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+  .difficulty-tag.easy { background: var(--easy); }
+  .difficulty-tag.medium { background: var(--medium); }
+  .difficulty-tag.hard { background: var(--hard); }
+
+  .question-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    white-space: pre-line;
+  }
+
+  /* MULTIPLE CHOICE OPTIONS */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .option {
+    background: #FAFAFA;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .option:active:not(.locked) {
+    transform: scale(0.98);
+    background: #f0f0f0;
+  }
+  .option:hover:not(.locked) {
+    border-color: var(--ink);
+    transform: translateX(4px);
+    background: white;
+  }
+  .option .opt-letter {
+    background: var(--ink);
+    color: var(--accent);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+  }
+  .option.correct {
+    background: #d4edda;
+    border-color: var(--green);
+    animation: correctPulse 0.4s ease;
+  }
+  .option.correct .opt-letter { background: var(--green); color: white; }
+  .option.wrong {
+    background: #ffe0e0;
+    border-color: var(--red);
+    animation: wrongShake 0.4s ease;
+  }
+  .option.wrong .opt-letter { background: var(--red); color: white; }
+  .option.show-correct {
+    background: #d4edda;
+    border-color: var(--green);
+  }
+  .option.show-correct .opt-letter { background: var(--green); color: white; }
+  .option.locked { cursor: default; opacity: 0.85; }
+
+  @keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+  @keyframes wrongShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
+  /* FEEDBACK */
+  .feedback {
+    margin-top: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 600;
+    display: none;
+    animation: slideDown 0.3s ease;
+  }
+  .feedback.show { display: block; }
+  .feedback.success { background: #d4edda; color: #155724; border: 2px solid var(--green); }
+  .feedback.error { background: #ffe0e0; color: #721c24; border: 2px solid var(--red); }
+  .feedback.info { background: #FFF3CD; color: #856404; border: 2px solid var(--accent); }
+
+  /* OPEN-ENDED */
+  .open-prompt {
+    background: #fff5e0;
+    border: 2px dashed var(--medium);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* ACTIONS */
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .btn {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--ink);
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn.hint { background: var(--accent); }
+  .btn.answer { background: var(--secondary); color: var(--ink); }
+  .btn.thought { background: var(--purple); color: white; border-color: var(--purple); }
+  .btn.retry { background: var(--medium); color: white; border-color: var(--medium); }
+  .btn.done { background: var(--green); color: white; border-color: var(--green); }
+  .btn.done.active { background: var(--ink); color: var(--accent); border-color: var(--ink); }
+
+  .reveal {
+    margin-top: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    display: none;
+    animation: slideDown 0.3s ease;
+    white-space: pre-line;
+  }
+  .reveal.show { display: block; }
+  .reveal.hint-box { background: #FFF3CD; border: 2px solid var(--accent); }
+  .reveal.answer-box { background: #D1ECF1; border: 2px solid var(--secondary); }
+  .reveal strong { font-weight: 700; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+  .filter-btn {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn.active {
+    background: var(--ink);
+    color: var(--accent);
+  }
+
+  /* CONFETTI */
+  .confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 200;
+    overflow: hidden;
+    display: none;
+  }
+  .confetti-container.show { display: block; }
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    animation: fall 2s ease-out forwards;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+  footer strong { font-family: 'Fraunces', serif; color: var(--primary); }
+
+  @media (max-width: 600px) {
+    .modal { padding: 1.25rem; }
+    .progress-card { font-size: 0.8rem; }
+    .progress-stat .num { font-size: 1.2rem; }
+    .doodle { display: none; }
+    .question { padding: 1rem; }
+    .option { padding: 0.65rem 0.85rem; font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="doodle d1">🔢</div>
+  <div class="doodle d2">📐</div>
+  <div class="doodle d3">📊</div>
+  <span class="badge">Türkiye Yüzyılı Maarif Modeli</span>
+  <h1>5. Sınıf Matematik<br><span class="accent">Soru Bankası</span></h1>
+  <p class="subtitle">Sayılardan geometriye kadar tüm konular! Anında geri bildirim al. 🚀</p>
+</header>
+
+<div class="container">
+
+  <div class="progress-card">
+    <div class="progress-stat">
+      <span class="num" id="totalCount">0</span>
+      <span>Çıktı</span>
+    </div>
+    <div class="progress-stat green">
+      <span class="num" id="correctCount">0</span>
+      <span>Doğru</span>
+    </div>
+    <div class="progress-stat red">
+      <span class="num" id="wrongCount">0</span>
+      <span>Yanlış</span>
+    </div>
+    <div class="progress-stat yellow">
+      <span class="num" id="successRate">0%</span>
+      <span>Başarı</span>
+    </div>
+    <button class="reset-btn" onclick="resetProgress()">↺ Sıfırla</button>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterArea('all', this)">Tümü</button>
+    <button class="filter-btn" onclick="filterArea('sayilar', this)">🔢 Sayılar</button>
+    <button class="filter-btn" onclick="filterArea('islemler', this)">➕ İşlemler</button>
+    <button class="filter-btn" onclick="filterArea('geometri', this)">📐 Geometri</button>
+    <button class="filter-btn" onclick="filterArea('olcme', this)">📏 Ölçme</button>
+    <button class="filter-btn" onclick="filterArea('veri', this)">📊 Veri</button>
+    <button class="filter-btn" onclick="filterArea('olasilik', this)">🎲 Olasılık</button>
+  </div>
+
+  <div class="kazanim-grid" id="kazanimGrid"></div>
+</div>
+
+<footer>
+  <p>Hazırlayan: <strong>@jasmin.eduflow</strong> · Müfredat: 2025-2026 MEB Maarif Modeli</p>
+</footer>
+
+<div class="confetti-container" id="confetti"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+// ============= SORU BANKASI =============
+// type: "mc" = multiple choice (çoktan seçmeli), "open" = açık uçlu
+const KAZANIMLAR = [
+
+  // ============ SAYILAR ============
+  {
+    code: "MAT.5.1.1",
+    area: "sayilar",
+    areaLabel: "SAYILAR VE İŞLEMLER",
+    title: "Altı basamaklı sayıları okuma ve yazma",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "352.847 sayısı nasıl okunur?",
+        options: [
+          "Üç yüz elli iki bin sekiz yüz kırk yedi",
+          "Üç bin beş yüz iki bin sekiz yüz kırk yedi",
+          "Otuz beş bin iki yüz seksen dört bin yedi",
+          "Üç milyon beş yüz iki bin sekiz yüz kırk yedi"
+        ],
+        correct: 0,
+        hint: "Sayıyı sağdan başlayarak 3'lü gruplara ayır: 352 / 847. Önce solu (bin), sonra sağı oku.",
+        explanation: "352.847 = 352 BİN 847\n\n• 352 → üç yüz elli iki BİN\n• 847 → sekiz yüz kırk yedi\n\nDoğru okunuş: «üç yüz elli iki bin sekiz yüz kırk yedi»"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "«Yetmiş beş bin altı yüz» sayısının rakamla yazılışı hangisidir?",
+        options: ["75.060", "75.600", "750.600", "7.560"],
+        correct: 1,
+        hint: "Yetmiş beş BİN = 75.000. Buna altı yüz ekle.",
+        explanation: "Yetmiş beş BİN = 75.000\nAltı yüz = 600\nToplam: 75.000 + 600 = 75.600 ✓\n\nDikkat: «altmış» ile «altı yüz» farklıdır!"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Aşağıdaki sayıyı:\n• Rakamla yaz\n• Basamak adlarını söyle\n• En büyük basamağındaki rakamın değerini yaz\n\nSayı: «Dört yüz seksen iki bin altı yüz on beş»",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "Önce 'bin'den önceyi ve sonrasını ayır. 482 BİN + 615.\nBasamaklar sağdan: birler, onlar, yüzler, binler, on binler, yüz binler",
+        explanation: "Çözüm:\n\n1) Rakamla yazılışı: 482.615\n\n2) Basamaklar (sağdan sola):\n• 5 → birler\n• 1 → onlar\n• 6 → yüzler\n• 2 → binler\n• 8 → on binler\n• 4 → yüz binler\n\n3) En büyük basamak: 4 (yüz binler basamağı)\n   Değeri: 4 × 100.000 = 400.000\n\n💡 Günlük hayat: Banka cüzdanında, fatura tutarlarında, nüfus sayılarında bu sayılarla karşılaşırsın."
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.1.2",
+    area: "sayilar",
+    areaLabel: "SAYILAR VE İŞLEMLER",
+    title: "Doğal sayılarla işlem ve gerçek yaşam problemleri",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Bir markette 248 elma ve 175 portakal vardır. Bunların TOPLAMI kaç meyvedir?",
+        options: ["323", "413", "423", "433"],
+        correct: 2,
+        hint: "Toplama yap: 248 + 175 = ?",
+        explanation: "248 + 175 = 423\n\n   248\n + 175\n ─────\n   423"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Ali'nin 580 lirası vardı. Önce 235 liralık bir kitap, sonra 128 liralık bir defter aldı. Geriye kaç lirası kalır?",
+        options: ["205 lira", "215 lira", "217 lira", "225 lira"],
+        correct: 2,
+        hint: "Önce harcadıklarını topla (235 + 128). Sonra toplam paradan çıkar (580 - toplam).",
+        explanation: "Adım 1: Harcamalar toplamı\n235 + 128 = 363 lira\n\nAdım 2: Geri kalan\n580 - 363 = 217 lira ✓\n\n💡 Günlük hayat: Alışverişte çok kullandığın bir hesap. Cebindeki para - aldığın şeylerin toplam fiyatı = kalan paran."
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir okulda 6 sınıf vardır. Her sınıfta 28 öğrenci bulunmaktadır. Okul yönetimi her öğrenciye 3 kalem dağıtacaktır.\n\n1) Okulda toplam kaç öğrenci vardır?\n2) Toplam kaç kalem gerekir?\n3) Bir kutuda 50 kalem varsa, kaç kutu kalem alınmalıdır?",
+        prompt: "📝 Üç işlemi defterine yaz, sonra butona bas.",
+        hint: "1) Sınıf sayısı × öğrenci sayısı\n2) Toplam öğrenci × kalem sayısı\n3) Toplam kalem ÷ 50, kalan varsa 1 fazla kutu",
+        explanation: "Çözüm:\n\n1) Toplam öğrenci sayısı:\n6 × 28 = 168 öğrenci\n\n2) Toplam kalem ihtiyacı:\n168 × 3 = 504 kalem\n\n3) Kutu sayısı:\n504 ÷ 50 = 10 kutu (kalan 4 kalem)\nKalan 4 kalem için 1 kutu daha lazım.\nToplam: 11 kutu\n\n💡 Günlük hayat: Sınıf etkinliklerinde malzeme alımı, parti hazırlığında ikram hesabı gibi durumlarda bu mantığı kullanırsın."
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.1.3",
+    area: "sayilar",
+    areaLabel: "SAYILAR VE İŞLEMLER",
+    title: "Kesirlerin farklı gösterimleri (bileşik, tam sayılı, ondalık, yüzde)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Aşağıdakilerden hangisi 1/2 kesrine eşittir?",
+        options: ["0,2", "0,5", "0,02", "0,25"],
+        correct: 1,
+        hint: "Yarım kek = ne kadarı? Hem kesir, hem ondalık olarak düşün.",
+        explanation: "1/2 = 0,5 ✓\n\nÇünkü:\n• 1 sayı 2'ye bölünür → 1 ÷ 2 = 0,5\n• 1/2 = bütünün yarısı = %50 = 0,5\n\nFarklı gösterimleri:\n• Kesir: 1/2\n• Ondalık: 0,5\n• Yüzde: %50"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "%25 hangi kesre eşittir?",
+        options: ["1/2", "1/4", "1/5", "2/5"],
+        correct: 1,
+        hint: "%25 = yüzde yirmi beş = 25/100. Bunu sadeleştir.",
+        explanation: "%25 = 25/100\n\nSadeleştirme: 25 ve 100'ü 25'e böl\n25 ÷ 25 = 1\n100 ÷ 25 = 4\n\nSonuç: 1/4 ✓\n\nGörsel: Bir pizza 4 eşit dilime bölünürse, 1 dilim %25'tir."
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "3/4 kesrini AŞAĞIDAKİ FARKLI 3 GÖSTERİMLE yaz:\n\n1) Ondalık sayı olarak\n2) Yüzde olarak\n3) Bir tortayla görsel anlatım (kaç dilime bölünmüş, kaç tanesi var?)",
+        prompt: "📝 Üç gösterimi de defterine yaz, sonra butona bas.",
+        hint: "3 ÷ 4 işlemini yap (ondalık).\n3/4'ü %... ile ifade et.\nTortayı 4 dilime böl, 3'ünü düşün.",
+        explanation: "3/4 farklı gösterimler:\n\n1) Ondalık: 3 ÷ 4 = 0,75\n\n2) Yüzde: 3/4 = 75/100 = %75\n   (Pay ve paydayı 25 ile çarp)\n\n3) Görsel:\n   ┌──┬──┐\n   │██│██│   → 4 dilime bölünmüş torta\n   ├──┼──┤\n   │██│  │   → 3'ü dolu (yenilmiş/seçilmiş)\n   └──┴──┘\n\n   Bütün: 4 dilim\n   Seçilen: 3 dilim\n   3/4 = %75 = 0,75\n\n💡 Günlük hayat: Telefonun şarjı %75 dolu derken, aslında 3/4 dolu diyorsun!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.1.4",
+    area: "sayilar",
+    areaLabel: "SAYILAR VE İŞLEMLER",
+    title: "Kesirleri karşılaştırma",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "1/2 ile 1/3 kesirlerinden hangisi daha büyüktür?",
+        options: ["1/3 daha büyük", "1/2 daha büyük", "Eşittir", "Karşılaştırılamaz"],
+        correct: 1,
+        hint: "Bir pastayı 2 kişiye bölersen mi, 3 kişiye bölersen mi her birine daha fazla pasta düşer?",
+        explanation: "1/2 > 1/3 ✓\n\nNeden: Aynı bütünü ne kadar AZ parçaya bölersen, her parça o kadar BÜYÜK olur.\n\n• 1/2 → bütünün yarısı (büyük dilim)\n• 1/3 → bütünün üçte biri (daha küçük dilim)\n\nGörsel:\n[████████] = 1/2\n[█████___] = 1/3"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Aşağıdakileri büyükten küçüğe sırala:\n\n3/4 ,  1/2 ,  5/8",
+        options: [
+          "3/4 > 5/8 > 1/2",
+          "1/2 > 5/8 > 3/4",
+          "5/8 > 3/4 > 1/2",
+          "3/4 > 1/2 > 5/8"
+        ],
+        correct: 0,
+        hint: "Hepsini eşit paydaya getir. EKOK = 8.\n• 3/4 = 6/8\n• 1/2 = 4/8\n• 5/8 = 5/8\n\nŞimdi sırala.",
+        explanation: "Tüm kesirleri payda 8 yap:\n• 3/4 = 6/8\n• 1/2 = 4/8\n• 5/8 = 5/8\n\nKarşılaştırma (paydalar eşit, payları karşılaştır):\n6/8 > 5/8 > 4/8\n\nSonuç: 3/4 > 5/8 > 1/2 ✓"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Ahmet pizzanın 2/3'ünü, Ayşe ise pizzanın 3/5'ini yedi.\n\n1) Hangisi daha çok pizza yemiştir?\n2) Cevabını eşit paydalı kesirlerle açıkla.\n3) Aralarındaki fark kaç kesir kadardır?",
+        prompt: "📝 Üç soruyu defterine cevapla, sonra butona bas.",
+        hint: "Paydaları eşitle: 3 ve 5'in EKOK'u 15.\n• 2/3 = 10/15\n• 3/5 = 9/15\n\nFark = büyük - küçük",
+        explanation: "Çözüm:\n\nPaydaları eşitleme (EKOK = 15):\n• 2/3 = (2×5)/(3×5) = 10/15\n• 3/5 = (3×3)/(5×3) = 9/15\n\n1) Karşılaştırma: 10/15 > 9/15\n   → AHMET daha çok yemiştir\n\n2) Açıklama: Pizzayı 15 eşit dilime böldüğümüzde:\n   • Ahmet 10 dilim yedi\n   • Ayşe 9 dilim yedi\n\n3) Fark: 10/15 - 9/15 = 1/15\n   → Aralarında 1/15 kesir kadar fark var.\n\n💡 Günlük hayat: Tarif takip ederken, alışveriş yaparken, paylaşım yaparken kesirleri sürekli karşılaştırırsın."
+      }
+    ]
+  },
+
+  // ============ İŞLEMLER VE CEBİR ============
+  {
+    code: "MAT.5.2.1",
+    area: "islemler",
+    areaLabel: "İŞLEMLER VE CEBİR",
+    title: "Eşitliğin korunumu, işlem özellikleri (değişme, birleşme, dağılma)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "5 + 8 = 8 + 5 eşitliği hangi özelliği gösterir?",
+        options: [
+          "Birleşme özelliği",
+          "Değişme özelliği",
+          "Dağılma özelliği",
+          "Sıfırın özelliği"
+        ],
+        correct: 1,
+        hint: "Sayıların yerleri DEĞİŞTİ ama sonuç değişmedi. Bu özelliğin adı ne?",
+        explanation: "DEĞİŞME özelliği ✓\n\nToplama (ve çarpmada) sayıların yeri değişse de sonuç değişmez:\n• 5 + 8 = 13\n• 8 + 5 = 13\n\nBu özellik çıkarma ve bölmede YOKTUR:\n• 8 - 5 = 3 ama 5 - 8 = -3 (farklı!)"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Aşağıdakilerden hangisi DAĞILMA özelliğine örnektir?",
+        options: [
+          "(2 + 3) + 4 = 2 + (3 + 4)",
+          "5 × 7 = 7 × 5",
+          "3 × (4 + 5) = 3×4 + 3×5",
+          "8 + 0 = 8"
+        ],
+        correct: 2,
+        hint: "Dağılma = bir sayının PARANTEZ İÇİNDEKİ HER İKİ sayıya tek tek dağılması.",
+        explanation: "Dağılma özelliği ✓\n\n3 × (4 + 5) = (3 × 4) + (3 × 5)\n3 × 9 = 12 + 15\n27 = 27 ✓\n\nDiğer şıklar:\n• A) Birleşme özelliği\n• B) Değişme özelliği\n• D) Etkisiz eleman (sıfırın özelliği)"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Aşağıdaki işlemi DAĞILMA özelliği kullanarak ÇÖZ ve adımlarını göster:\n\n6 × 47 = ?\n\nİpucu: 47 = 40 + 7 olarak düşün.",
+        prompt: "📝 Defterine adım adım çöz, sonra butona bas.",
+        hint: "6 × 47 = 6 × (40 + 7) = (6 × 40) + (6 × 7)\nÖnce parantez içini topla? Hayır, dağıtmamız gerek!",
+        explanation: "Dağılma özelliği ile çözüm:\n\n6 × 47 = 6 × (40 + 7)\n\nDağıtıyoruz:\n= (6 × 40) + (6 × 7)\n= 240 + 42\n= 282\n\nKontrol:\n6 × 47 = 282 ✓\n\n💡 Günlük hayat: Markette zihinden hesap yaparken bu yöntemi kullanırız! «3 tane 28 liralık şey» için 3 × 28 = 3 × (30 - 2) = 90 - 6 = 84 lira. Hızlı ve kolay!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.2.2",
+    area: "islemler",
+    areaLabel: "İŞLEMLER VE CEBİR",
+    title: "İşlem önceliği (parantez, çarpma/bölme, toplama/çıkarma)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Aşağıdaki işlemin sonucu kaçtır?\n\n4 + 3 × 2 = ?",
+        options: ["10", "14", "11", "20"],
+        correct: 0,
+        hint: "ÖNCE çarpma yapılır, SONRA toplama. 3 × 2 = ?, sonra 4 + ... = ?",
+        explanation: "İşlem önceliği kuralı:\n1. Önce ÇARPMA (3 × 2 = 6)\n2. Sonra TOPLAMA (4 + 6 = 10)\n\nDoğru cevap: 10 ✓\n\nUYARI: Soldan sağa OKUYUP işlem yaparsan 4 + 3 = 7, 7 × 2 = 14 olur — bu YANLIŞ!"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Aşağıdaki işlemin sonucu kaçtır?\n\n(8 + 4) ÷ 2 - 1 = ?",
+        options: ["3", "4", "5", "11"],
+        correct: 2,
+        hint: "Sıralama:\n1) Önce PARANTEZ (8+4)\n2) Sonra BÖLME (... ÷ 2)\n3) Sonra ÇIKARMA (... - 1)",
+        explanation: "Adım adım çözüm:\n\n(8 + 4) ÷ 2 - 1\n\n1) Parantez: 8 + 4 = 12\n   → 12 ÷ 2 - 1\n\n2) Bölme: 12 ÷ 2 = 6\n   → 6 - 1\n\n3) Çıkarma: 6 - 1 = 5 ✓\n\nÖncelik kuralları:\n1. Parantez\n2. Çarpma / Bölme (soldan sağa)\n3. Toplama / Çıkarma (soldan sağa)"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Aşağıdaki problemin işlem cümlesini YAZ ve ÇÖZ:\n\n«Bir kutuda 3 paket çikolata var. Her pakette 8 çikolata bulunuyor. Anne, bu çikolataları 4 çocuk arasında EŞİT paylaştırmak istiyor. Her çocuğa kaç çikolata düşer?»",
+        prompt: "📝 İşlem cümlesini ve cevabı defterine yaz, sonra butona bas.",
+        hint: "Önce TOPLAM çikolata sayısı: 3 paket × 8 çikolata\nSonra 4 çocuğa böl.\nİşlem: (3 × 8) ÷ 4",
+        explanation: "Çözüm:\n\nİşlem cümlesi:\n(3 × 8) ÷ 4 = ?\n\n1) Parantez: 3 × 8 = 24 (toplam çikolata)\n2) Bölme: 24 ÷ 4 = 6\n\nCevap: Her çocuğa 6 çikolata düşer ✓\n\nKontrol: 6 × 4 = 24 ✓ Doğru!\n\n💡 Günlük hayat: Doğum gününde pasta dilimlerini paylaştırırken, partide ikramları bölüştürürken bu işlem önceliğini düşünmeden kullanırsın."
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.2.3",
+    area: "islemler",
+    areaLabel: "İŞLEMLER VE CEBİR",
+    title: "Sayı ve şekil örüntülerinin kuralı",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Aşağıdaki örüntünün kuralı nedir?\n\n3, 6, 9, 12, 15, ...",
+        options: [
+          "Her sayı 2 artıyor",
+          "Her sayı 3 artıyor",
+          "Her sayı 4 artıyor",
+          "Her sayıya 5 ekleniyor"
+        ],
+        correct: 1,
+        hint: "İki ardışık sayı arasındaki farkı bul: 6 - 3 = ?",
+        explanation: "Örüntünün kuralı: HER SAYI 3 ARTIYOR ✓\n\n6 - 3 = 3\n9 - 6 = 3\n12 - 9 = 3\n15 - 12 = 3\n\nSonraki sayılar: 18, 21, 24...\n\nBu, 3'ün katları örüntüsüdür."
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Aşağıdaki örüntüde ? yerine hangi sayı gelir?\n\n2, 5, 11, 23, ?",
+        options: ["35", "37", "47", "46"],
+        correct: 2,
+        hint: "Ardışık sayılar arasında basit fark yok. Belki bir sayıyla çarp ve bir sayı ekle?\n2 → 5: (×2 + 1)\n5 → 11: (×2 + 1)\n11 → 23: (×2 + 1)",
+        explanation: "Örüntü kuralı: «×2 + 1»\n\nKontrol:\n• 2 × 2 + 1 = 5 ✓\n• 5 × 2 + 1 = 11 ✓\n• 11 × 2 + 1 = 23 ✓\n• 23 × 2 + 1 = 47 ✓\n\nSonraki sayı: 47"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Aşağıdaki şekil örüntüsünü incele:\n\n● (1 nokta)\n● ● (2 nokta)\n● ● ● (3 nokta)\n● ● ● ● (4 nokta)\n\n1) 5. adımda kaç nokta olur?\n2) 10. adımda kaç nokta olur?\n3) Bu örüntünün KURALINI yazılı olarak ifade et.",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1, 2, 3, 4... Bu nedir? Adım numarası ile noktanın sayısı arasında bir bağ var mı?",
+        explanation: "Çözüm:\n\nÖrüntüde her adımda 1 nokta artıyor:\n• 1. adım: 1 nokta\n• 2. adım: 2 nokta\n• 3. adım: 3 nokta\n• 4. adım: 4 nokta\n\n1) 5. adım: 5 nokta\n2) 10. adım: 10 nokta\n\n3) KURAL: «n. adımda n tane nokta vardır»\n   Yani adım numarası kadar nokta var.\n\n💡 Günlük hayat: Örüntüleri tanımak çok değerli — bir oyunda strateji bulmak, müzikte ritim yakalamak, yaşamda alışkanlıkları fark etmek hep örüntü tanıma becerisidir."
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.2.4",
+    area: "islemler",
+    areaLabel: "İŞLEMLER VE CEBİR",
+    title: "Aritmetik işlem algoritmaları",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "127 + 84 işleminin sonucu kaçtır?",
+        options: ["191", "201", "211", "221"],
+        correct: 2,
+        hint: "Eldeli toplama yap. Birler basamağı: 7 + 4 = 11 (1 elde var). Onlar: 2 + 8 + 1 = ...",
+        explanation: "Adım adım eldeli toplama:\n\n   1\n  127\n+  84\n ─────\n  211\n\n• Birler: 7 + 4 = 11 → birler 1, elde 1\n• Onlar: 2 + 8 + 1(elde) = 11 → onlar 1, elde 1\n• Yüzler: 1 + 0 + 1(elde) = 2\n\nSonuç: 211 ✓"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "375 - 168 işleminin sonucu kaçtır?",
+        options: ["207", "213", "217", "247"],
+        correct: 0,
+        hint: "Onluk bozma gerekiyor. Birler: 5'ten 8 çıkmaz, onlardan 1 al. 15 - 8 = 7. Onlar: 6'dan 6 çıkar (0 ya da 1 verdik?)",
+        explanation: "Adım adım çıkarma (onluk bozma ile):\n\n  3 7̶ 5  → 3 6 (15)\n -  168\n ─────\n   207\n\n• Birler: 5 < 8, onluk boz: 15 - 8 = 7\n• Onlar: 6 - 6 = 0\n• Yüzler: 3 - 1 = 2\n\nSonuç: 207 ✓"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Aşağıdaki çarpma işlemini yap ve adımlarını göster:\n\n45 × 23 = ?\n\nİki yöntemden BİRİNİ kullan:\n• Klasik çarpma algoritması\n• Dağılma özelliği yöntemi (45 × (20 + 3))",
+        prompt: "📝 Çözümünü defterine yaz, sonra butona bas.",
+        hint: "Klasik yöntem:\n   45\n × 23\n ────\n  135  (45 × 3)\n  90    (45 × 2 onluk = 90 onluk)\n ────\n 1035",
+        explanation: "Yöntem 1: Klasik Çarpma\n\n     45\n   × 23\n   ────\n    135   ← 45 × 3 = 135\n   90_    ← 45 × 20 = 900 (sıfır yer tutucu)\n   ────\n   1035\n\nSonuç: 45 × 23 = 1035 ✓\n\nYöntem 2: Dağılma Özelliği\n\n45 × 23 = 45 × (20 + 3)\n         = (45 × 20) + (45 × 3)\n         = 900 + 135\n         = 1035 ✓\n\n💡 Günlük hayat: «23 öğrenciye 45'er TL kitap parası gerekirse toplam ne kadar lazım?» 45 × 23 = 1035 TL. Sınıf bütçesi planlamasında bu işlemi sürekli yaparsın."
+      }
+    ]
+  },
+
+  // ============ GEOMETRİ ============
+  {
+    code: "MAT.5.3.1",
+    area: "geometri",
+    areaLabel: "GEOMETRİ VE ÖLÇME",
+    title: "Temel geometrik çizimler (cetvel, gönye, pergel kullanımı)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Düz çizgi çizmek için hangi araç kullanılır?",
+        options: ["Pergel", "Cetvel", "İletki", "Gönye"],
+        correct: 1,
+        hint: "Hangi alet düz ve uzun? Çizgi için bir kenarına yaslanırız.",
+        explanation: "Düz çizgi için CETVEL kullanılır ✓\n\nDiğer aletler:\n• Pergel → Çember/yay çizmek için\n• İletki → Açı ölçmek için\n• Gönye → Dik açı (90°) çizmek için"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "PERGEL ile aşağıdakilerden hangisi çizilemez?",
+        options: [
+          "Çember",
+          "Yay",
+          "Belirli yarıçaplı daire",
+          "Düz çizgi"
+        ],
+        correct: 3,
+        hint: "Pergel iki ucu olan bir alet, biri sabit biri döner. Bu hareketle ne çizilir?",
+        explanation: "DÜZ ÇİZGİ pergel ile çizilemez ✓\n\nPergel ile çizilebilenler:\n✓ Çember (tam tur)\n✓ Yay (çemberin parçası)\n✓ Belirli yarıçaplı daire (pergeli açma miktarı)\n\nDüz çizgi için CETVEL gerekir."
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Aşağıdaki çizimi yapmak için HANGİ aletleri sırasıyla kullanırsın? Adımları yaz:\n\n«Bir kâğıda 5 cm uzunluğunda bir doğru parçası çiz. Sonra bu doğrunun BİR UCUNDA 60 derecelik bir AÇI oluştur.»",
+        prompt: "📝 Adımları ve gereken aletleri defterine yaz, sonra butona bas.",
+        hint: "1. Doğru çizmek için ne lazım?\n2. Açı oluşturmak için ne lazım?",
+        explanation: "Adım adım çözüm:\n\nADIM 1: 5 cm doğru çizimi\n→ ARAÇ: CETVEL\n• Cetvelin 0 noktasından başla\n• 5 cm'yi bul, çizgi çek\n\nADIM 2: 60° açı oluşturma\n→ ARAÇ: İLETKİ\n• İletkinin merkezini doğru parçasının ucuna koy\n• 0° çizgisi doğruyla aynı yönde olsun\n• 60° derecesini işaretle\n• Cetvelle iki noktayı birleştir\n\nKULLANILAN ARAÇLAR (sırayla):\n1. Cetvel (uzunluk için)\n2. İletki (açı ölçmek için)\n3. Cetvel (açı çizgisini çizmek için)\n\n💡 Günlük hayat: Mimarlar, mühendisler, tasarımcılar bu aletleri sürekli kullanır. Lego veya origami yaparken bile geometrik çizim mantığı işin içine girer."
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.3.2",
+    area: "geometri",
+    areaLabel: "GEOMETRİ VE ÖLÇME",
+    title: "Temel geometrik çizimlerden deneyim aktarma",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "İki noktayı birleştiren EN KISA YOL hangisidir?",
+        options: ["Eğri çizgi", "Düz çizgi (doğru parçası)", "Zikzak çizgi", "Yay"],
+        correct: 1,
+        hint: "Bir noktadan diğerine en kısa nasıl gidilir? Düz mü, dolaşarak mı?",
+        explanation: "İki nokta arasındaki EN KISA YOL: DÜZ ÇİZGİ ✓\n\nBu, geometride çok önemli bir kuraldır.\n\nDoğru parçası = iki ucu belli olan düz çizgi\n\nGüzel bilgi: Bu yüzden uçaklar bile yer şekilleri elverdiğinde DÜZ uçar — yakıt tasarrufu için."
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Aşağıdakilerden hangisi BİR ÇEMBER üzerinde HER ZAMAN bulunur?",
+        options: [
+          "İki yan yana nokta arasındaki uzaklık",
+          "Merkeze her noktadan eşit uzaklık",
+          "Bir köşesi",
+          "Birbirine paralel iki kenar"
+        ],
+        correct: 1,
+        hint: "Çember, merkeze HEP AYNI UZAKLIKTA olan noktaların oluşturduğu şekildir.",
+        explanation: "Çemberin TANIMI: ✓\n\n«Bir merkeze EŞİT UZAKLIKTAKİ tüm noktaların kümesi»\n\nBu uzaklığa YARIÇAP denir.\n\nDiğer şıklar:\n• A) Komşu noktalar arasındaki uzaklık değişebilir\n• C) Çemberde köşe yok (sürekli eğri)\n• D) Çemberde paralel kenar yok (kenar bile yok!)"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Pergel kullanarak çember çizdiğinde ne öğrendiğini açıkla:\n\n1) Pergelin SABİT ucu nereyi belirler?\n2) Pergelin AÇIK olduğu mesafe neyi belirler?\n3) Aynı merkezden iki farklı yarıçaplı çember çizersen, bunlar arasında ne tür bir ilişki vardır?",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) Sabit ucu battığı yer hangi geometrik kavramdır?\n2) Pergel açılırsa ne büyür?\n3) Aynı merkez + farklı yarıçap = nasıl bir görüntü?",
+        explanation: "Çözümler:\n\n1) Pergelin SABİT UCU → MERKEZ noktasını belirler\n   (Çemberin kalbi, eşit uzaklığın referansı)\n\n2) Pergelin AÇIK MESAFESİ → YARIÇAP'ı belirler\n   (Merkezden çembere olan uzaklık)\n   Daha çok açarsan → daha büyük çember\n\n3) Aynı merkezden farklı yarıçaplar:\n   • EŞ MERKEZLİ ÇEMBERLER oluşur\n   • Birbirinin içinde iç içe geçmiş daireler\n   • Hedef tahtası gibi! 🎯\n\nGörsel:\n      ╭─────╮\n     │ ╭─╮  │\n     │ │•│  │   ← Aynı merkez (•)\n     │ ╰─╯  │      Farklı yarıçap\n      ╰─────╯\n\n💡 Günlük hayat: Hedef tahtası, dalga halkaları, bir taşı suya attığında oluşan halkalar — hepsi eş merkezli çember!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.3.3",
+    area: "geometri",
+    areaLabel: "GEOMETRİ VE ÖLÇME",
+    title: "Açıları ölçme (iletki kullanımı)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Açı ölçmek için kullanılan alet hangisidir?",
+        options: ["Cetvel", "Gönye", "İletki", "Pergel"],
+        correct: 2,
+        hint: "Yarım daire şeklinde, üzerinde 0°-180° rakamları yazan alet hangisi?",
+        explanation: "Açı ölçmek için İLETKİ kullanılır ✓\n\nİletki:\n• Yarım daire şeklinde\n• 0°'den 180°'ye kadar dereceler\n• Plastik veya metal\n\nKullanımı:\n1. Merkezi açının köşesine koy\n2. 0° çizgisini bir kenara hizala\n3. Diğer kenarın gösterdiği dereceyi oku"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Bir AÇI 90° ise bu açıya ne ad verilir?",
+        options: ["Dar açı", "Geniş açı", "Dik açı", "Doğru açı"],
+        correct: 2,
+        hint: "Dik açı: tam köşe gibi, T harfi gibi, kitap köşesi gibi.",
+        explanation: "90° açıya DİK AÇI denir ✓\n\nAçı türleri:\n• Dar açı: 0° < açı < 90° (sivri)\n• Dik açı: tam 90° (köşe ⌐)\n• Geniş açı: 90° < açı < 180° (yayvan)\n• Doğru açı: tam 180° (düz çizgi)\n• Tam açı: 360° (tam tur)\n\nGünlük hayat örnekleri:\n• Kitap köşesi → dik açı\n• Saat 3'ü gösterirken akrep-yelkovan → dik açı"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "İletkiyle bir açıyı ölçtün ve 130° buldun.\n\n1) Bu açı türü nedir? (dar, dik, geniş?)\n2) Bu açının BÜTÜNLER (180°'ye tamamlayan) açısı kaç derecedir?\n3) Bu açıyı saat üzerinde göstermek istersen, akrep ve yelkovan saat kaçı gösterir? (yaklaşık)",
+        prompt: "📝 Üç soruyu defterine cevapla, sonra butona bas.",
+        hint: "1) 130° hangi aralıkta? (90 ile 180 arası)\n2) 180° - 130° = ?\n3) Saatte 1 saat = 30°. 130° / 30° = ?",
+        explanation: "Çözümler:\n\n1) AÇI TÜRÜ: GENİŞ AÇI ✓\n   Çünkü 90° < 130° < 180°\n\n2) BÜTÜNLER AÇI:\n   180° - 130° = 50°\n   (Bütünler açılar toplamı 180°)\n\n3) SAAT YORUMU:\n   1 saat = 360° ÷ 12 = 30°\n   130° ÷ 30° ≈ 4,33 saat\n   \n   Yelkovan 12'de duruyorsa, akrep yaklaşık saat 4'ü 20 dakika geçeyi gösterir.\n\n💡 Günlük hayat: Spor — futbolda pas açıları, basketbolda atış açıları. Sanat — perspektif çiziminde açılar. Mühendislik — köprülerde, binalarda her açı hesaplı!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.3.4",
+    area: "geometri",
+    areaLabel: "GEOMETRİ VE ÖLÇME",
+    title: "İki/üç doğrunun durumlarına göre oluşan açılar",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "İki doğru BİRBİRİNE PARALELDİR. Bu doğrular birbirleriyle KESİŞİR mi?",
+        options: [
+          "Evet, bir noktada kesişir",
+          "Hayır, hiç kesişmez",
+          "İki noktada kesişir",
+          "Bazen kesişir, bazen kesişmez"
+        ],
+        correct: 1,
+        hint: "Paralel doğrular tren rayları gibidir. Hiç buluşurlar mı?",
+        explanation: "PARALEL DOĞRULAR HİÇ KESİŞMEZ ✓\n\nParalel doğrular:\n• Aralarındaki mesafe HER YERDE eşittir\n• Ne kadar uzasalar da birleşmezler\n\nGörsel:\n──────────\n──────────  ← Paralel (hiç kesişmez)\n\nGünlük örnekler:\n• Tren rayları\n• Defter çizgileri\n• Kitap kenarları (uzun kenarlar)"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "İki doğru BİR NOKTADA dik kesişiyor. Oluşan açıların DEĞERİ kaç derecedir?",
+        options: [
+          "Hepsi 45°",
+          "Hepsi 60°",
+          "Hepsi 90°",
+          "İkisi 60°, ikisi 120°"
+        ],
+        correct: 2,
+        hint: "Dik kesişme = 90° ile kesişme. Bir noktada 360°'lik bir tur var, 4 eşit parçaya bölünür.",
+        explanation: "Dik kesişen iki doğru → 4 tane 90°'lik (DİK) açı oluşturur ✓\n\n   │\n───┼───\n   │\n\nKontrol: 90° × 4 = 360° (bir tam tur)\n\nGünlük örnek:\n• Yol kavşağı (artı şeklinde)\n• Pencere çerçevesi\n• Şehir sokakları (Manhattan, New York)"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Aşağıdaki durumda doğruların KONUMUNU TESPİT ET:\n\n1) İki doğrunun kesişmediği bir durum vardır. Bu doğruların adı nedir?\n2) İki doğru kesişip 4 tane EŞİT açı oluşturuyorsa, bu doğruların özelliği nedir?\n3) Üç doğru AYNI NOKTADAN geçiyorsa bu noktaya ne ad verilir?",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) Hiç buluşmayan doğrular = ?\n2) Eşit açı = 90° = ?\n3) Aynı noktadan geçen doğruların buluştuğu nokta = ?",
+        explanation: "Çözümler:\n\n1) Kesişmeyen doğrular → PARALEL doğrulardır\n   ──────\n   ──────\n\n2) 4 eşit açı (her biri 90°) oluşturan doğrular → DİK (PERPENDIKÜLER) doğrulardır\n      │\n   ───┼───\n      │\n\n3) Aynı noktadan geçen doğruların kesişim yeri → KESİŞİM NOKTASI\n   Birden fazla doğru aynı noktada kesişiyorsa bu noktaya ORTAK NOKTA da denir.\n\n   ╲│╱\n   ─•─\n   ╱│╲\n\n💡 Günlük hayat: Mimari planlamada paralel ve dik doğrular sürekli kullanılır. Bir şehir haritasına bak — sokaklar genelde paralel veya dik kesişir!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.3.5",
+    area: "geometri",
+    areaLabel: "GEOMETRİ VE ÖLÇME",
+    title: "Çokgenler (üçgen, dörtgen, beşgen, altıgen)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Bir ÇOKGENİN kenar sayısı KAÇ olabilir?",
+        options: ["1 veya daha az", "En az 2", "En az 3", "Sadece 4"],
+        correct: 2,
+        hint: "Çokgen = ÇOK + KENAR. Bir kapalı şekil olması için minimum kaç kenar gerekir?",
+        explanation: "Çokgen → EN AZ 3 KENAR olmalıdır ✓\n\nMinimum çokgen → ÜÇGEN (3 kenar)\n\nÇokgen olabilmek için:\n• Düz kenarlardan oluşmalı\n• Kapalı şekil olmalı\n• En az 3 kenar olmalı\n\n2 kenarla kapalı şekil yapılamaz!\nÇembre kenar sayısı yok (eğri), o yüzden çokgen değildir."
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "5 kenarı olan çokgenin adı nedir?",
+        options: ["Dörtgen", "Beşgen", "Altıgen", "Yedigen"],
+        correct: 1,
+        hint: "Türkçede sayı + 'gen' = çokgenin adı.\n3 → üçgen\n4 → dörtgen\n5 → ?",
+        explanation: "5 kenarlı çokgen → BEŞGEN ✓\n\nÇokgen adları:\n• 3 kenar → Üçgen\n• 4 kenar → Dörtgen (kare, dikdörtgen)\n• 5 kenar → Beşgen\n• 6 kenar → Altıgen\n• 7 kenar → Yedigen\n• 8 kenar → Sekizgen\n\nGünlük örnek:\n• Trafik DUR işareti → Sekizgen\n• Arı peteği → Altıgen"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir DÜZGÜN ALTIGEN şekli düşün.\n\n1) Kaç kenarı vardır?\n2) Kaç köşesi vardır?\n3) Kenarları arasında nasıl bir ilişki vardır (DÜZGÜN olduğu için)?\n4) Günlük hayatta nerede karşımıza çıkar? (En az 1 örnek ver)",
+        prompt: "📝 Dört sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) ALTIgen = 6 ne?\n2) Bir çokgenin kenar sayısı = köşe sayısı\n3) DÜZGÜN = bütün kenarlar nasıl?\n4) Arı kovanında, döşemelerde nerede vardır?",
+        explanation: "Çözümler:\n\n1) Kenar sayısı: 6\n\n2) Köşe sayısı: 6\n   (Her çokgende KENAR SAYISI = KÖŞE SAYISI)\n\n3) DÜZGÜN altıgen demek:\n   • Tüm kenarlar EŞİT uzunlukta\n   • Tüm açılar EŞİT (her biri 120°)\n   • Simetrik bir şekildir\n\n4) Günlük örnekler:\n   • 🐝 Arı peteği — doğanın en verimli düzeni\n   • Banyo/mutfak fayansları\n   • Futbol topundaki siyah parçalar (bazen)\n   • Kar tanesinin yapısı\n   • Karbon atomu yapısı (kimya)\n\nGörsel:\n     ╱──╲\n    │    │\n    │    │\n     ╲──╱\n\n💡 Günlük hayat: Arılar petek yapısı için altıgeni «keşfetmiştir» — çünkü altıgen, en az malzeme ile en çok alanı kaplayan şekildir. Doğa matematik öğretiyor!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.3.6",
+    area: "geometri",
+    areaLabel: "GEOMETRİ VE ÖLÇME",
+    title: "Çokgenlerin özellikleri",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Bir KARENİN kenarları arasında nasıl bir ilişki vardır?",
+        options: [
+          "Karşılıklı kenarları eşit, diğerleri farklı",
+          "Tüm kenarları farklı uzunlukta",
+          "Tüm kenarları eşit uzunlukta",
+          "İki kenarı eşit, ikisi farklı"
+        ],
+        correct: 2,
+        hint: "Kare = 4 kenarı eşit + 4 açısı eşit. Dikdörtgenden farkı bu.",
+        explanation: "KARE: TÜM KENARLARI EŞİT ✓\n\nKare özellikleri:\n• 4 kenarı vardır\n• Tüm kenarları eşit uzunluktadır\n• Tüm açıları 90° (dik açı)\n\nKare ↔ Dikdörtgen farkı:\n• Kare → tüm kenarlar EŞİT\n• Dikdörtgen → karşılıklı kenarlar eşit (uzun-kısa kenarlar var)\n\nKare aslında özel bir dikdörtgendir!"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Aşağıdakilerden hangisi DİKDÖRTGENİN özelliği DEĞİLDİR?",
+        options: [
+          "Karşılıklı kenarları eşit uzunluktadır",
+          "Tüm açıları 90°'dir",
+          "Karşılıklı kenarları paraleldir",
+          "Tüm kenarları her zaman birbirine eşittir"
+        ],
+        correct: 3,
+        hint: "Dikdörtgenin uzun ve kısa kenarları var değil mi? Eşit olan ne, farklı olan ne?",
+        explanation: "Dikdörtgenin TÜM KENARLARI EŞİT DEĞİLDİR ✓\n\nDikdörtgen özellikleri:\n✓ Karşılıklı kenarları eşittir (uzun-uzun, kısa-kısa)\n✓ Karşılıklı kenarları paraleldir\n✓ Tüm açıları 90°'dir\n✗ Bütün kenarları eşit DEĞİLDİR\n\nNot: Eğer tüm kenarları eşit olursa o artık KARE olur (özel bir dikdörtgen)."
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir ÜÇGENİN AÇILARININ TOPLAMI HER ZAMAN 180°'dir. Buna göre:\n\n1) Bir üçgende iki açı 60° ve 70° ise, üçüncü açı kaç derecedir?\n2) Tüm açıları EŞİT olan bir üçgenin her bir açısı kaç derecedir?\n3) Bir üçgende DİK açı (90°) varsa, diğer iki açının TOPLAMI kaç derece olur?",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) 180 - (60+70) = ?\n2) 180 ÷ 3 = ?\n3) 180 - 90 = ?",
+        explanation: "Çözümler (Üçgenin iç açıları toplamı = 180°):\n\n1) Üçüncü açı:\n   60° + 70° = 130°\n   180° - 130° = 50°\n   → Üçüncü açı 50°\n\n2) Tüm açılar eşit (eşkenar üçgen):\n   180° ÷ 3 = 60°\n   → Her açı 60°\n\n3) Dik üçgende kalan açıların toplamı:\n   180° - 90° = 90°\n   → Diğer iki açı toplamı 90°\n\n💡 Günlük hayat: Mimaride çatılar üçgendir — açıların toplamı 180° kuralına uyar. Müzikte gitar telinin tutulduğu açılar, sporda atış açıları... her yerde geometri var!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.3.7",
+    area: "geometri",
+    areaLabel: "GEOMETRİ VE ÖLÇME",
+    title: "Çember ve daire kavramları",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Çember ile daire arasındaki FARK nedir?",
+        options: [
+          "Aynıdırlar",
+          "Çember sadece çevre, daire ise içi dolu yüzey",
+          "Daire sadece çevre, çember ise içi dolu yüzey",
+          "Çember büyük, daire küçük"
+        ],
+        correct: 1,
+        hint: "Boncuk yapımındaki halka 'çember', üzerine pasta tabağı koyulan içi dolu şekil 'daire' gibi düşün.",
+        explanation: "ÇEMBER ile DAİRE FARKI ✓\n\n🔵 ÇEMBER → Sadece KENAR çizgisi (içi boş)\n   ○ → halka, yüzük\n\n🔴 DAİRE → İçi DOLU yüzey\n   ● → tabak, top kesiti\n\nGünlük örnek:\n• Bisiklet jantı → çember\n• CD (yüzeyi) → daire\n• Yüzük → çember\n• Pizza → daire"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Bir çemberin MERKEZİNDEN ÇEMBERE çizilen doğru parçasına ne ad verilir?",
+        options: ["Çap", "Yarıçap", "Kiriş", "Kenar"],
+        correct: 1,
+        hint: "Yarıçap = Çapın yarısı. Merkezden çevreye çizilen.\nÇap = bir uçtan diğerine çemberi ortadan ikiye bölen.",
+        explanation: "MERKEZ → ÇEMBER doğru parçası = YARIÇAP ✓\n\nÇember terimleri:\n\n• YARIÇAP (r): Merkezden çembere uzunluk\n• ÇAP (d): Çemberin bir ucundan diğer ucuna geçen, merkezden geçen doğru\n  → Çap = 2 × Yarıçap\n• KİRİŞ: Çemberde iki noktayı birleştiren ama merkezden geçmeyen doğru\n\nGörsel:\n        ___\n      .'   '.\n     /   •--+--•   ← Çap (yarıçap × 2)\n     \   |       \n      \__|__/\n         •  ← Yarıçap (merkezden tek nokta)"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "İki çember KESİŞMEKTE ve aynı düzlemdedir.\n\n1) İki çember EN FAZLA kaç noktada kesişebilir?\n2) İki çember hiç KESİŞMEZSE bunlara ne denir? (Aynı merkezde olabilirler veya farklı yerlerde olabilirler.)\n3) Eğer iki çember TEK NOKTADA dokunuyorsa bu duruma ne denir?",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) İki eğri çizgi en fazla kaç yerde kesişir?\n2) Aynı merkez ama farklı yarıçap: ne tip?\n3) Sadece bir noktada dokunmak — özel bir terim var.",
+        explanation: "Çözümler:\n\n1) İki çember EN FAZLA 2 NOKTADA kesişir.\n   (Bir çember başka bir çemberin ya hiç ya 1 ya 2 noktasından geçebilir.)\n\n2) Hiç kesişmeyen iki çember:\n   • AYRIK çemberler (tamamen ayrı dururlar)\n   • İÇ İÇE çemberler (biri diğerinin içinde)\n   • EŞ MERKEZLİ çemberler (aynı merkez, farklı yarıçap)\n\n3) Tek noktada dokunan çemberler:\n   • TEĞET çemberler\n   • İçten teğet veya dıştan teğet olabilir\n\nGörseller:\n• 2 noktada kesişen: ⊕⊕\n• Teğet (dıştan): ○○\n• Eş merkezli: ◎\n\n💡 Günlük hayat: Olimpiyat halkaları — birbirine teğet ve kesişen çemberlerin güzel örneği! 5 halka 5 kıtayı temsil eder."
+      }
+    ]
+  },
+
+  // ============ ÖLÇME ============
+  {
+    code: "MAT.5.4.1",
+    area: "olcme",
+    areaLabel: "ÖLÇME",
+    title: "Dikdörtgenin çevresi (kenar uzunlukları)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Uzun kenarı 8 cm, kısa kenarı 5 cm olan bir dikdörtgenin ÇEVRESİ kaç cm'dir?",
+        options: ["13 cm", "26 cm", "40 cm", "20 cm"],
+        correct: 1,
+        hint: "Dikdörtgenin çevresi = 2 × (uzun kenar + kısa kenar)\nVeya: tüm kenarları topla: 8 + 8 + 5 + 5 = ?",
+        explanation: "Dikdörtgen çevresi:\n\n• Karşılıklı kenarları eşit\n• Çevre = 8 + 5 + 8 + 5 = 26 cm\n\nVeya formülle:\nÇevre = 2 × (a + b) = 2 × (8 + 5) = 2 × 13 = 26 cm ✓"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Bir KARENİN bir kenarı 7 cm. Bu karenin ÇEVRESİ kaç cm'dir?",
+        options: ["14 cm", "21 cm", "28 cm", "49 cm"],
+        correct: 2,
+        hint: "Karenin 4 kenarı eşit. Çevre = 4 × kenar.",
+        explanation: "Karenin Çevresi = 4 × Kenar Uzunluğu\n\n4 × 7 = 28 cm ✓\n\nVeya tek tek toplayarak:\n7 + 7 + 7 + 7 = 28 cm\n\nKARE FORMÜLÜ:\n• Çevre = 4 × a (a: kenar)\n• Alan = a × a (sonra göreceksin)"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir dikdörtgen şeklindeki bahçenin çevresi 60 metredir. Uzun kenarı 18 metredir.\n\n1) Kısa kenarı kaç metredir?\n2) Bu bahçenin etrafına TEL ÇEKİLECEKTİR. 1 metre tel 25 lira ise toplam ne kadar para gerekir?\n3) Bahçenin etrafında her 3 metrede 1 ağaç dikilirse, kaç ağaç gerekir?",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) Çevre formülü: 2(a+b)=60. a=18 ise b=?\n2) Toplam tel = çevre. Tel × birim fiyat\n3) Çevre / 3",
+        explanation: "Çözümler:\n\n1) Kısa kenarı bulma:\n   Çevre = 2 × (uzun + kısa)\n   60 = 2 × (18 + b)\n   30 = 18 + b\n   b = 12 metre\n\n2) Tel masrafı:\n   Toplam tel = çevre = 60 m\n   Maliyet = 60 × 25 = 1.500 TL\n\n3) Ağaç sayısı:\n   60 ÷ 3 = 20 ağaç\n\n💡 Günlük hayat: Bahçe duvarı, tel örgü, kaldırım taşı, halı kenarı… ölçü bilgisi olmadan ne kadar malzeme alacağını bilmezsin. Çevre hesabı evde, tarlada, inşaatta hep gerekli!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.4.2",
+    area: "olcme",
+    areaLabel: "ÖLÇME",
+    title: "Dikdörtgenin alanı (birim kareler)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Aşağıdaki dikdörtgen 4 satır ve 6 sütun birim karelere bölünmüştür.\n\n┌─┬─┬─┬─┬─┬─┐\n├─┼─┼─┼─┼─┼─┤\n├─┼─┼─┼─┼─┼─┤\n└─┴─┴─┴─┴─┴─┘\n\nBu dikdörtgenin ALANI kaç birim karedir?",
+        options: ["10", "20", "24", "30"],
+        correct: 2,
+        hint: "Tüm birim kareleri say. Veya: satır × sütun.",
+        explanation: "Dikdörtgenin alanı = Satır × Sütun\n\n4 × 6 = 24 birim kare ✓\n\nAlan = içindeki birim karelerin sayısıdır.\nDikdörtgen formülü:\nAlan = uzun kenar × kısa kenar"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Uzun kenarı 9 cm, kısa kenarı 4 cm olan bir dikdörtgenin ALANI kaç cm²'dir?",
+        options: ["13 cm²", "26 cm²", "36 cm²", "40 cm²"],
+        correct: 2,
+        hint: "Alan = uzun kenar × kısa kenar\n9 × 4 = ?",
+        explanation: "Alan formülü = uzun kenar × kısa kenar\n\n9 × 4 = 36 cm² ✓\n\nÖnemli notlar:\n• Çevre 'cm', alan 'cm²' (santimetrekare) ile ölçülür\n• cm² = bir kenarı 1 cm olan birim karedir\n• Bu dikdörtgende 36 tane 1 cm × 1 cm'lik kare sığar"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir sınıfın TABANI dikdörtgen şeklindedir. Uzunluğu 8 metre, genişliği 6 metredir.\n\n1) Sınıfın TABAN ALANI kaç m²'dir?\n2) Bu sınıfa BİR fayans 50 cm × 50 cm boyutundaysa kaç fayans gerekir?\n3) Bir öğrenci sırası ALANI yaklaşık 1 m². Bu sınıfa kaç sıra sığar (tahminen)?",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) 8 × 6 = ?\n2) 1 fayans = 0,5 × 0,5 = 0,25 m². Sınıf alanı / fayans alanı.\n3) Bütün alana sığar mı? Sınıfta yürüme alanı da olmalı! Yarısı kullanılabilir alan demek mantıklı.",
+        explanation: "Çözümler:\n\n1) Sınıfın taban alanı:\n   8 × 6 = 48 m² ✓\n\n2) Fayans hesabı:\n   1 fayans = 50 cm × 50 cm = 0,5 m × 0,5 m = 0,25 m²\n   Toplam fayans = 48 ÷ 0,25 = 192 fayans\n\n   (Veya: 1 m² için 4 fayans, 48 m² için 4 × 48 = 192)\n\n3) Sıra sayısı:\n   Tüm alana sığar gibi görünür ama yürüme yolu, öğretmen masası vs. lazım.\n   Pratik kullanım: 48 m²'nin yaklaşık YARISI = 24 m²\n   1 sıra = 1 m² → yaklaşık 24 sıra\n\n💡 Günlük hayat: Evde halı seçerken, fayans alırken, boya hesabı yaparken hep alan hesaplarsın. Anneye dolap için yer baktığın zaman 'genişlik × derinlik' hesabı yaparsın!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.4.3",
+    area: "olcme",
+    areaLabel: "ÖLÇME",
+    title: "Alan verildiğinde kenar bulma",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Bir dikdörtgenin alanı 24 cm², bir kenarı 6 cm. Diğer kenarı kaç cm'dir?",
+        options: ["3 cm", "4 cm", "5 cm", "8 cm"],
+        correct: 1,
+        hint: "Alan = uzun × kısa. Bilinmeyeni bulmak için: Alan ÷ Bilinen Kenar = ?",
+        explanation: "Alan = Kenar1 × Kenar2 olduğundan:\nKenar2 = Alan ÷ Kenar1\n\nKenar2 = 24 ÷ 6 = 4 cm ✓\n\nKontrol: 6 × 4 = 24 cm² ✓"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Bir karenin ALANI 49 cm². Bu karenin BİR KENARI kaç cm'dir?",
+        options: ["7 cm", "14 cm", "9 cm", "24,5 cm"],
+        correct: 0,
+        hint: "Kare alanı = kenar × kenar. Hangi sayıyı kendisiyle çarparsan 49 olur?",
+        explanation: "Kare alanı = a × a = a²\n\nKenar × Kenar = 49\nDemek ki: a × a = 49\nHangi sayı? a = 7\n(çünkü 7 × 7 = 49) ✓\n\nBuna 'karekök alma' denir. (İleride göreceksin: √49 = 7)"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir dikdörtgen tarlanın ALANI 120 m²'dir.\n\n1) Eğer KISA kenarı 8 m ise UZUN kenarı kaç m'dir?\n2) Aynı alana sahip BAŞKA dikdörtgenler de olabilir. Aynı alana (120 m²) sahip 2 farklı kenar uzunluğu örneği yaz.\n3) Bu tarlanın ÇEVRESİ kaç metredir? (1. sorudaki kenarları kullan)",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) 120 ÷ 8 = ?\n2) 120 = ? × ? . İki sayı bul (örn: 10 × 12, 6 × 20)\n3) Çevre = 2 × (uzun + kısa)",
+        explanation: "Çözümler:\n\n1) Uzun kenar:\n   120 ÷ 8 = 15 m\n   Kısa: 8 m, Uzun: 15 m\n\n2) Aynı alana sahip farklı dikdörtgenler:\n   • 10 m × 12 m = 120 m²\n   • 6 m × 20 m = 120 m²\n   • 5 m × 24 m = 120 m²\n   • 3 m × 40 m = 120 m²\n   (Hepsinin alanı 120 m² ama şekilleri çok farklı)\n\n3) Çevre (8 ve 15 ile):\n   2 × (8 + 15) = 2 × 23 = 46 m\n\n💡 Günlük hayat: Aynı alanlı odalar bile çok farklı şekillerde olabilir. 30 m²'lik bir oda hem kare hem uzun-dar olabilir. Mobilya yerleşimi tamamen şekle bağlıdır!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.4.4",
+    area: "olcme",
+    areaLabel: "ÖLÇME",
+    title: "Dikdörtgenin çevre ve alan problemleri",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Bir kenar uzunluğu 6 m olan KARE şeklindeki bir bahçenin ÇEVRESİ kaç metredir?",
+        options: ["12 m", "18 m", "24 m", "36 m"],
+        correct: 2,
+        hint: "Kare çevresi = 4 × kenar",
+        explanation: "Kare çevresi = 4 × kenar\n4 × 6 = 24 metre ✓\n\nNot: Eğer ALAN sorulsaydı: 6 × 6 = 36 m² olurdu."
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Uzunluğu 10 m, genişliği 5 m olan bir HALI satın alındı. Halıyı saracak naylonun (alan kaplayan) BOYUTU kaç m²'dir?",
+        options: ["15 m²", "30 m²", "50 m²", "100 m²"],
+        correct: 2,
+        hint: "Halı bir dikdörtgen. Naylon halıyı SARMALI, yani halının ALANI kadar olmalı. Alan = uzunluk × genişlik.",
+        explanation: "Halıyı kaplayacak naylon = halının ALANI kadar\n\nAlan = uzunluk × genişlik = 10 × 5 = 50 m² ✓\n\nDikkat: \n• Çevre (15 m × 2 = 30 m) → halının ETRAFI için (kenar şerit)\n• Alan (50 m²) → halının yüzeyi için (üzerini kapatma)"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir okul bahçesi DİKDÖRTGEN şeklindedir. Uzun kenarı 30 m, kısa kenarı 20 m'dir.\n\n1) Bahçenin etrafına TEL örülecek. Kaç m tel gerekir?\n2) Bahçenin tabanına ÇİM ekilecek. Kaç m² çim gerekir?\n3) 1 m² çim 80 lira ise, çim için TOPLAM kaç para gerekir?\n4) Etrafına 2 m'de bir AĞAÇ dikilirse kaç ağaç gerekir? (Köşelere de ağaç dikilecek)",
+        prompt: "📝 Dört sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) Çevre = 2 × (30+20)\n2) Alan = 30 × 20\n3) Alan × birim fiyat\n4) Çevre ÷ 2",
+        explanation: "Çözümler:\n\n1) Tel uzunluğu (çevre):\n   2 × (30 + 20) = 2 × 50 = 100 m\n\n2) Çim alanı (alan):\n   30 × 20 = 600 m²\n\n3) Çim maliyeti:\n   600 × 80 = 48.000 TL\n\n4) Ağaç sayısı:\n   100 ÷ 2 = 50 ağaç\n   (Köşeler dâhil çevre düzenli bölündüğü için tam çıktı.)\n\nÖZET TABLO:\n• Çevre: 100 m\n• Alan: 600 m²\n• Çim parası: 48.000 TL\n• Ağaç: 50 adet\n\n💡 Günlük hayat: Belediyeler park yapımında, ev sahipleri tadilatta hep bu hesapları kullanır. ÇEVRE = etrafına ne kadar lazım, ALAN = içine ne kadar lazım. Bu farkı KARIŞTIRMA!"
+      }
+    ]
+  },
+
+  // ============ VERİ ============
+  {
+    code: "MAT.5.5.1",
+    area: "veri",
+    areaLabel: "VERİ İŞLEME",
+    title: "Kategorik veri ve istatistiksel araştırma",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Aşağıdakilerden hangisi KATEGORİK VERİ örneğidir?",
+        options: [
+          "Bir kişinin boyu (cm)",
+          "Bir öğrencinin yaşı",
+          "Bir öğrencinin en sevdiği renk",
+          "Bir sınıftaki öğrenci sayısı"
+        ],
+        correct: 2,
+        hint: "Kategorik = sınıflandırılabilen, sayı OLMAYAN veriler. Renk, cinsiyet, marka, hayvan türü gibi.",
+        explanation: "KATEGORİK VERİ: Renk, cinsiyet, marka gibi SINIFLANDIRMA verisi ✓\n\n• «En sevdiği renk» → mavi, kırmızı, yeşil... → KATEGORİK\n\nDiğer şıklar:\n• Boy (cm) → SAYISAL veri\n• Yaş → SAYISAL veri\n• Öğrenci sayısı → SAYISAL veri\n\nÖZET:\n• Kategorik = isim/sınıflandırma (renk, hayvan, marka)\n• Sayısal = ölçülen miktar (boy, yaş, sıcaklık)"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Bir öğretmen sınıftaki öğrencilerin EN SEVDİĞİ MEYVEYİ öğrenmek istiyor. Bu hangi tür bir veri toplamadır?",
+        options: [
+          "Sayısal veri toplama",
+          "Kategorik veri toplama",
+          "Olasılık hesabı",
+          "Geometrik ölçüm"
+        ],
+        correct: 1,
+        hint: "«En sevdiği meyve» = elma, muz, çilek... Bu sayı mı, kategori mi?",
+        explanation: "Bu KATEGORİK VERİ toplamadır ✓\n\nMeyveler: elma, muz, çilek, üzüm... → kategorilere ayrılır.\n\nNasıl toplanır?\n1. Her öğrenciye «en sevdiğin meyve?» sorulur\n2. Cevaplar bir tabloya işlenir:\n\n| Meyve   | Sayı |\n|---------|------|\n| Elma    | 8    |\n| Muz     | 6    |\n| Çilek   | 10   |\n| Üzüm    | 3    |\n\nSonra çubuk grafik veya pasta grafik yapılır."
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "5/A sınıfında 25 öğrenci var. Onlara «hafta sonu en sevdiğin aktivite hangisi?» diye sorduğunda şu cevaplar geldi:\n\nKitap okuma: 4\nFilm izleme: 7\nSpor yapma: 9\nOyun oynama: 5\n\n1) Bu hangi tür bir veri? (sayısal mı, kategorik mi?)\n2) Toplam veri 25 mi? Kontrol et.\n3) En çok ve en az tercih edilen aktivite hangileridir?\n4) Bu veriyi göstermek için hangi grafik en uygun olur?",
+        prompt: "📝 Dört sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) Aktivite türleri = kategori\n2) 4 + 7 + 9 + 5 = ?\n3) En büyük ve en küçük sayılı aktivite\n4) Kategori karşılaştırması için: çubuk grafik, pasta grafik",
+        explanation: "Çözümler:\n\n1) KATEGORİK veri (aktivite türleri sınıflandırılabilir)\n\n2) Toplam: 4 + 7 + 9 + 5 = 25 ✓\n   (25 öğrenci ile uyumlu)\n\n3) En çok: SPOR YAPMA (9 öğrenci)\n   En az: KİTAP OKUMA (4 öğrenci)\n\n4) En uygun grafik türleri:\n   • ÇUBUK GRAFİK → kategorileri net karşılaştırır\n   • PASTA GRAFİK → her aktivitenin oranını gösterir\n   \n   (Çizgi grafiği SAYISAL ZAMAN serisi için uygundur, burada uygun değil.)\n\n💡 Günlük hayat: Anketler hep böyle yapılır! Belediyenin sokak anketleri, bir markette müşteri tercih anketleri, sınıf başkanı seçimi… hepsi kategorik veri toplama!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.5.2",
+    area: "veri",
+    areaLabel: "VERİ İŞLEME",
+    title: "Veriden sonuç çıkarma ve yorum",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Aşağıdaki çubuk grafiğe göre EN ÇOK satılan dondurma çeşidi hangisidir?\n\nÇİKOLATA: ████████ (8)\nVANİLYA:  ████ (4)\nÇİLEK:    ██████ (6)\nLİMON:    ██ (2)",
+        options: ["Vanilya", "Çikolata", "Çilek", "Limon"],
+        correct: 1,
+        hint: "Çubuğu en uzun olan = en çok satılan.",
+        explanation: "Çikolata 8 adet ile EN ÇOK satılmıştır ✓\n\nGrafiği okumanın püf noktaları:\n• Çubuk uzunluğu = miktar\n• Sayıları tek tek karşılaştır\n• Karar ver: en büyük → en çok\n\nSıralama:\n1. Çikolata (8) ⭐\n2. Çilek (6)\n3. Vanilya (4)\n4. Limon (2)"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Bir sınıftaki öğrencilerin notları:\n5 öğrenci → 90 ve üzeri\n10 öğrenci → 70-89\n8 öğrenci → 50-69\n2 öğrenci → 50'den az\n\nSınıfta TOPLAM kaç öğrenci vardır ve EN ÇOK kaçı hangi aralıktadır?",
+        options: [
+          "20 öğrenci, 90 ve üzeri en çok",
+          "25 öğrenci, 70-89 aralığı en çok",
+          "25 öğrenci, 50-69 aralığı en çok",
+          "23 öğrenci, 70-89 aralığı en çok"
+        ],
+        correct: 1,
+        hint: "Önce TOPLA: 5 + 10 + 8 + 2 = ?\nSonra en yüksek sayıya bak: 10 → hangi aralık?",
+        explanation: "Toplam: 5 + 10 + 8 + 2 = 25 öğrenci ✓\n\nEn yüksek sayı: 10 → 70-89 aralığı\n\nSınıfın çoğu (10 öğrenci) iyi notlu (70-89). Bu olumlu bir yorum yapılabilir.\n\nDoğru cevap: 25 öğrenci, 70-89 aralığı en çok ✓"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir okulun 5. sınıflarındaki öğrencilerin spor tercihleri:\n\nFutbol: 30 öğrenci\nBasketbol: 18 öğrenci\nVoleybol: 12 öğrenci\nYüzme: 20 öğrenci\nTenis: 5 öğrenci\nDans: 15 öğrenci\n\n1) Toplam kaç öğrenci ankete katılmış?\n2) En çok ve en az tercih edilen spor hangileri?\n3) Yüzme tercih edenler, futbol tercih edenlerin kaç katıdır? (Yaklaşık)\n4) Okula spor salonu eklenecek olsa, hangi spor için yapılması daha mantıklıdır? Niçin?",
+        prompt: "📝 Dört sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) Hepsini topla\n2) En büyük ve en küçük sayılar\n3) 30 ÷ 20 = ?\n4) En çok talep nereden geliyor?",
+        explanation: "Çözümler:\n\n1) Toplam:\n30 + 18 + 12 + 20 + 5 + 15 = 100 öğrenci\n\n2) En çok tercih: FUTBOL (30 öğrenci)\n   En az tercih: TENİS (5 öğrenci)\n\n3) Futbol/Yüzme oranı:\n30 ÷ 20 = 1,5\n→ Futbol tercih edenler, yüzme tercih edenlerin yaklaşık 1,5 katıdır.\n\n4) Karar yorumu:\nEn çok talep FUTBOL'da (30 öğrenci) → futbol sahası mantıklı.\n\nAMA dikkat: Yüzme havuzu 20 kişi tercih ediyor ama PAHALI bir yatırım, yıl boyu kullanılmaz olabilir.\nBasketbol (18) ve voleybol (12) için de aynı saha kullanılabilir → birleşik salon mantıklı.\n\nEN MANTIKLI KARAR: Çok amaçlı spor salonu (futbol, basketbol, voleybol için kullanılabilir) — toplam 60 öğrenciye hizmet eder.\n\n💡 Günlük hayat: Belediyeler, okullar, şirketler kararlarını VERİYE göre alır. Anket yapmak → analiz etmek → mantıklı karar = veri okuryazarlığı. 21. yüzyılın en önemli becerisi!"
+      }
+    ]
+  },
+
+  // ============ OLASILIK ============
+  {
+    code: "MAT.5.6.1",
+    area: "olasilik",
+    areaLabel: "OLASILIK",
+    title: "Olasılık 0 ile 1 arasında (kesin, imkânsız, eşit)",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Aşağıdaki olaylardan hangisinin gerçekleşmesi KESİNDİR?",
+        options: [
+          "Yarın hava yağmurlu olur",
+          "Güneş yarın doğar",
+          "Sınıfa giren ilk öğrenci kız olur",
+          "Zarda 1 atılır"
+        ],
+        correct: 1,
+        hint: "Hangisinin gerçekleşmesi 100% emin? Hangisi her zaman olur?",
+        explanation: "Güneşin doğması KESİN bir olaydır ✓\n\nOlasılık türleri:\n• KESİN (1) → mutlaka olur (Güneş doğar)\n• İMKÂNSIZ (0) → asla olmaz (Buz ısınınca taşa döner)\n• OLASI (0 ile 1 arası) → olabilir/olmayabilir\n\nDiğer şıklar olasıdır (kesin değil):\n• Yağmur olabilir, olmayabilir\n• İlk öğrenci kız da erkek de olabilir\n• Zarda 1 yerine 2,3,4,5,6 da gelebilir"
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Aşağıdaki olaylardan hangisinin olma olasılığı 0 (İMKÂNSIZ) olur?",
+        options: [
+          "Bir öğrencinin 100 yıl yaşaması",
+          "Bugün okula gelmesi",
+          "Bir balığın havada uçması (akvaryumda)",
+          "Bir doğum gününde yaş üflenmesi"
+        ],
+        correct: 2,
+        hint: "Hangisi DOĞAYA AYKIRIDIR? Asla olamayacak şey hangisi?",
+        explanation: "Bir balığın HAVADA UÇMASI imkânsızdır ✓\n\nOlasılık 0 = doğaya/mantığa aykırı, asla olmaz.\n\nDiğer şıklar:\n• 100 yıl yaşamak → Zor ama mümkün (olası, düşük olasılık)\n• Okula gelmek → Yüksek olasılık (kesin değil — hasta olabilir)\n• Yaş üflemek → Doğum gününde olur (yüksek olasılık)\n\nNot: 'Uçan balıklar' diye bir tür var ama o da SU ÜSTÜ kayma yapar, sürekli uçmaz."
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir torbada 3 KIRMIZI, 5 MAVİ ve 2 SARI top vardır. Topların boyutu ve şekli aynıdır.\n\n1) Toplamda kaç top var?\n2) Çekilen topun MAVİ olma olasılığı kesinlikle 0 mı, kesinlikle 1 mi, yoksa arada bir değer mi? Niçin?\n3) Çekilen topun YEŞİL olma olasılığı kaçtır?\n4) Hangi rengin çekilme olasılığı EN YÜKSEKTİR?",
+        prompt: "📝 Dört sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) 3 + 5 + 2 = ?\n2) Mavi top var, çekilebilir → ne tip olasılık?\n3) Torbada YEŞİL top var mı?\n4) Hangi renkte EN ÇOK top var?",
+        explanation: "Çözümler:\n\n1) Toplam: 3 + 5 + 2 = 10 top\n\n2) Mavi olma olasılığı: 0 ile 1 ARASINDA bir değer\n   Çünkü:\n   • Mavi top var → 0 değil (imkânsız değil)\n   • Sadece mavi yok → 1 değil (kesin değil)\n   • Mavi olabilir veya olmayabilir\n   \n   Sayısal değer: 5/10 = 1/2 = %50\n\n3) Yeşil olma olasılığı: 0 (İMKÂNSIZ)\n   Çünkü torbada hiç yeşil top yok!\n\n4) En yüksek olasılık: MAVİ (5 top)\n   • Mavi: 5/10 = %50\n   • Kırmızı: 3/10 = %30\n   • Sarı: 2/10 = %20\n\n💡 Günlük hayat: Hava durumu tahminleri olasılıklıdır. «Yarın yağmur olasılığı %70» dendiğinde, bu olayın 1 (kesin) ile 0 (imkânsız) arasında bir yerde olduğu söylenir!"
+      }
+    ]
+  },
+
+  {
+    code: "MAT.5.6.2",
+    area: "olasilik",
+    areaLabel: "OLASILIK",
+    title: "Olayları az/çok olasılıklı sınıflama",
+    questions: [
+      {
+        difficulty: "easy", type: "mc",
+        text: "Bir torbada 9 BEYAZ ve 1 SİYAH top var. Çekilen topun rengi büyük olasılıkla ne olur?",
+        options: ["Siyah", "Beyaz", "Eşit olasılık", "Tahmin edilemez"],
+        correct: 1,
+        hint: "Hangi renk daha ÇOK var? Çoğunlukta olan, daha BÜYÜK olasılıkla çekilir.",
+        explanation: "Beyaz top BÜYÜK OLASILIKLA çekilir ✓\n\nNeden: 9 beyaz + 1 siyah = 10 top.\nBeyaz olma şansı: 9/10 (çok yüksek)\nSiyah olma şansı: 1/10 (çok düşük)\n\nKural: Sayısı ÇOK olan, çekilme olasılığı YÜKSEK olandır."
+      },
+      {
+        difficulty: "medium", type: "mc",
+        text: "Aşağıdaki olaylardan hangisinin olma olasılığı EN AZDIR?",
+        options: [
+          "Bir zar atınca tek sayı (1, 3, 5) gelmesi",
+          "Bir madeni para atınca yazı gelmesi",
+          "Yılbaşının pazartesi gününe denk gelmesi",
+          "Bir öğrencinin sınıfta uyuya kalması"
+        ],
+        correct: 2,
+        hint: "Yılda 1 yılbaşı var, haftada 7 gün. Yılbaşının PAZARTESİYE denk gelme şansı kaç?",
+        explanation: "Yılbaşının PAZARTESİYE denk gelmesi = 1/7 ≈ %14 (en az)\n\nDiğer olasılıklar:\n• Zar tek sayı: 3/6 = %50 (yüksek!)\n• Para yazı: 1/2 = %50\n• Sınıfta uyuya kalma → çok değişken ama olasıdır (canı sıkkın olan herkes uyur 😄)\n\nDoğru cevap: Yılbaşı pazartesi → %14 (en az olasılık) ✓"
+      },
+      {
+        difficulty: "hard", type: "open",
+        text: "Bir sınıfta 30 öğrenci var. Bunlardan 18'i KIZ, 12'si ERKEKtir. Sınıftan rastgele bir öğrenci seçileceğine göre:\n\n1) Seçilen öğrencinin KIZ olma olasılığı yüksek mi, düşük mü?\n2) Seçilen öğrencinin ERKEK olma olasılığı kaç tane öğrenciden kaç tanesidir? (Kesir olarak)\n3) Eğer bir KIZ öğrenci seçildikten sonra bu öğrenci sınıftan ÇIKARILIRSA, bir sonraki KIZ öğrenci seçilme olasılığı NASIL DEĞİŞİR?",
+        prompt: "📝 Üç sorunun cevabını defterine yaz, sonra butona bas.",
+        hint: "1) 18 vs 12, hangisi çok?\n2) 12 erkek / 30 toplam\n3) 17 kız / 29 toplam (kız çekildi, sayılar azaldı). Eskisinden büyük mü küçük mü?",
+        explanation: "Çözümler:\n\n1) Kız olma olasılığı YÜKSEKTİR ✓\n   Çünkü 18 kız > 12 erkek\n   Olasılık: 18/30 = 3/5 = %60\n\n2) Erkek olma olasılığı: 12/30\n   Sadeleştirilmiş: 12/30 = 2/5 = %40\n   (12 erkek öğrenciden, 30 öğrencilik sınıfta)\n\n3) Bir kız seçilip çıkarıldıktan sonra:\n   • Sınıfta kalan: 29 öğrenci (1 kız çıktı)\n   • Kalan kız: 17\n   • Yeni olasılık: 17/29 ≈ %58,6\n   \n   AZALDI! (Önce %60 idi, şimdi %58,6)\n   \n   Çünkü kız sayısı azaldı, kız çekme olasılığı düştü.\n\n💡 Günlük hayat: Bu, KARTLARLA OYNARKEN de geçerli. Bir kart çekilip oyundan çıkartılınca, geri kalan kartların olasılığı değişir. Profesyonel oyuncular bunu hesaplar! Ayrıca tıpta hastalık olasılığı, sigortacılıkta risk hesabı hep böyle yapılır."
+      }
+    ]
+  }
+];
+
+// ============= APP STATE =============
+
+// HELPER: ID için kod temizleme (noktaları tireye çevir)
+function cleanId(code) { return code.replace(/\./g, '-'); }
+
+
+const grid = document.getElementById('kazanimGrid');
+const overlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+let currentFilter = 'all';
+
+// Motivasyon mesajları
+const CORRECT_MESSAGES = [
+  "🎉 Harika! Doğru cevap!",
+  "✨ Süpersin! Tam isabet!",
+  "🌟 Mükemmel! Başardın!",
+  "👏 Bravo! Çok iyi düşündün!",
+  "🚀 Tebrikler! Doğru yoldasın!",
+  "💪 Aynen öyle! Çok güzel!",
+  "🏆 İşte bu! Başarılısın!"
+];
+
+const WRONG_MESSAGES = [
+  "🤔 Bir daha düşünmek ister misin? Yanlış oldu ama vazgeçme!",
+  "💭 Tam olmadı, ama denemekten çekinme. Tekrar dene!",
+  "🌱 Yanlış cevap, ama her hata bir öğrenme fırsatıdır!",
+  "📚 Sorun değil! İpucuna bakıp tekrar dene.",
+  "💡 Yanlış oldu — bir kez daha oku, fark edeceksin!",
+  "🎯 Hedefi ıskaladın ama merak etme, sonraki vuruş senin!"
+];
+
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+// ============= STORAGE =============
+function getProgress() {
+  try {
+    return JSON.parse(localStorage.getItem('progress') || '{}');
+  } catch { return {}; }
+}
+
+function setProgress(p) {
+  try { localStorage.setItem('progress', JSON.stringify(p)); } catch {}
+}
+
+function getQuestionStatus(code, qIdx) {
+  const p = getProgress();
+  return p[`${code}_${qIdx}`]; // "correct" | "wrong" | undefined
+}
+
+function setQuestionStatus(code, qIdx, status) {
+  const p = getProgress();
+  p[`${code}_${qIdx}`] = status;
+  setProgress(p);
+  renderProgress();
+}
+
+function isKazanimCompleted(code) {
+  const k = KAZANIMLAR.find(x => x.code === code);
+  if (!k) return false;
+  // Tüm sorulara CEVAP VERİLMİŞ mi (doğru veya yanlış fark etmez)
+  for (let i = 0; i < k.questions.length; i++) {
+    if (!getQuestionStatus(code, i)) return false;
+  }
+  return true;
+}
+
+// ============= PROGRESS =============
+function renderProgress() {
+  const p = getProgress();
+  const values = Object.values(p);
+  const correct = values.filter(v => v === 'correct').length;
+  const wrong = values.filter(v => v === 'wrong').length;
+  const total = correct + wrong;
+  const rate = total ? Math.round((correct / total) * 100) : 0;
+  document.getElementById('totalCount').textContent = KAZANIMLAR.length;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  document.getElementById('successRate').textContent = rate + '%';
+}
+
+function resetProgress() {
+  if (confirm('Tüm ilerlemeni sıfırlamak istediğine emin misin? Skorların ve cevaplama geçmişin silinir.')) {
+    setProgress({});
+    renderGrid();
+    renderProgress();
+  }
+}
+
+// ============= FILTER =============
+function filterArea(area, btn) {
+  currentFilter = area;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+
+// ============= GRID =============
+function renderGrid() {
+  const filtered = currentFilter === 'all'
+    ? KAZANIMLAR
+    : KAZANIMLAR.filter(k => k.area === currentFilter);
+
+  grid.innerHTML = filtered.map(k => `
+    <div class="kazanim-card ${isKazanimCompleted(k.code) ? 'completed' : ''}" 
+         data-area="${k.area}" 
+         onclick="openModal('${k.code}')">
+      <span class="kazanim-tag">${k.areaLabel}</span>
+      <div class="kazanim-code">${k.code}</div>
+      <div class="kazanim-title">${k.title}</div>
+    </div>
+  `).join('');
+}
+
+// ============= MODAL =============
+function openModal(code) {
+  const k = KAZANIMLAR.find(x => x.code === code);
+  if (!k) return;
+
+  // Bu kazanımın skoru
+  let modalCorrect = 0, modalAnswered = 0;
+  for (let i = 0; i < k.questions.length; i++) {
+    const s = getQuestionStatus(code, i);
+    if (s) modalAnswered++;
+    if (s === 'correct') modalCorrect++;
+  }
+
+  modalContent.innerHTML = `
+    <button class="close-btn" onclick="closeModal()">×</button>
+    <div class="modal-header">
+      <span class="kazanim-tag" style="background: var(--ink); color: var(--accent);">${k.areaLabel}</span>
+      <div class="modal-code">${k.code}</div>
+      <div class="modal-title">${k.title}</div>
+    </div>
+
+    <div class="modal-score" id="modal-score">
+      <span>📊 Bu konudaki skorun</span>
+      <span><span class="score-num" id="m-correct">${modalCorrect}</span> / ${k.questions.length}</span>
+    </div>
+
+    ${k.questions.map((q, i) => renderQuestion(code, i, q)).join('')}
+  `;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderQuestion(code, i, q) {
+  const status = getQuestionStatus(code, i);
+  const diffLabel = q.difficulty === 'easy' ? '🟢 KOLAY' : q.difficulty === 'medium' ? '🟡 ORTA' : '🔴 ZOR';
+
+  if (q.type === 'mc') {
+    return `
+      <div class="question" id="q-${cleanId(code)}-${i}">
+        <span class="difficulty-tag ${q.difficulty}">${diffLabel}</span>
+        <div class="question-text">${q.text}</div>
+        <div class="options" id="opts-${cleanId(code)}-${i}">
+          ${q.options.map((opt, oi) => `
+            <button class="option ${status ? 'locked answered' : ''}" 
+                    onclick="selectOption('${code}', ${i}, ${oi})"
+                    ontouchend="event.preventDefault(); selectOption('${code}', ${i}, ${oi})"
+                    data-idx="${oi}"
+                    type="button">
+              <span class="opt-letter">${String.fromCharCode(65 + oi)}</span>
+              <span class="opt-text">${opt}</span>
+            </button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="fb-${cleanId(code)}-${i}"></div>
+        <div class="actions">
+          <button class="btn hint" onclick="toggleReveal('hint-' + cleanId(code) + '-' + i)">💡 İpucu</button>
+          ${status ? `<button class="btn retry" onclick="retryQuestion('${code}', ${i})">↺ Tekrar Dene</button>` : ''}
+        </div>
+        <div class="reveal hint-box" id="hint-${cleanId(code)}-${i}">
+          <strong>İPUCU:</strong><br>${q.hint}
+        </div>
+      </div>
+    `;
+  } else {
+    // open-ended
+    return `
+      <div class="question" id="q-${cleanId(code)}-${i}">
+        <span class="difficulty-tag ${q.difficulty}">${diffLabel}</span>
+        <div class="question-text">${q.text}</div>
+        <div class="open-prompt">${q.prompt || '📝 Cevabını defterine yaz, hazır olduğunda butona bas.'}</div>
+        <div class="actions">
+          <button class="btn hint" onclick="toggleReveal('hint-' + cleanId(code) + '-' + i)">💡 İpucu</button>
+          <button class="btn thought" onclick="showOpenAnswer('${code}', ${i})">✍️ Cevabımı Düşündüm, Doğrusunu Göster</button>
+        </div>
+        <div class="reveal hint-box" id="hint-${cleanId(code)}-${i}">
+          <strong>İPUCU:</strong><br>${q.hint}
+        </div>
+        <div class="reveal answer-box" id="ans-${cleanId(code)}-${i}">
+          <strong>📖 ÖRNEK CEVAP:</strong><br>${q.explanation}
+        </div>
+        <div class="feedback info" id="fb-${cleanId(code)}-${i}" ${status === 'correct' ? 'style="display:block"' : ''}>
+          ✨ Tebrikler, bu soruyu düşündüğünü kaydettim!
+        </div>
+      </div>
+    `;
+  }
+}
+
+// ============= ANSWER LOGIC =============
+function selectOption(code, i, optIdx) {
+  // Eğer zaten cevap verilmişse, dokunma
+  const existingStatus = getQuestionStatus(code, i);
+  if (existingStatus) return;
+  
+  const k = KAZANIMLAR.find(x => x.code === code);
+  const q = k.questions[i];
+  const isCorrect = optIdx === q.correct;
+  
+  // Lock all options
+  const opts = document.querySelectorAll(`#opts-${cleanId(code)}-${i} .option`);
+  opts.forEach(o => o.classList.add('locked'));
+  
+  // Mark selected
+  if (isCorrect) {
+    opts[optIdx].classList.add('correct');
+    showFeedback(code, i, pick(CORRECT_MESSAGES) + ' ' + q.explanation, 'success');
+    setQuestionStatus(code, i, 'correct');
+    if (q.difficulty === 'hard') triggerConfetti();
+  } else {
+    opts[optIdx].classList.add('wrong');
+    opts[q.correct].classList.add('show-correct');
+    showFeedback(code, i, pick(WRONG_MESSAGES) + '\n\n📖 Doğru cevap açıklaması: ' + q.explanation, 'error');
+    setQuestionStatus(code, i, 'wrong');
+  }
+
+  // Modal skoru güncelle
+  let mc = 0;
+  for (let j = 0; j < k.questions.length; j++) {
+    if (getQuestionStatus(code, j) === 'correct') mc++;
+  }
+  const mcEl = document.getElementById('m-correct');
+  if (mcEl) mcEl.textContent = mc;
+
+  // Add retry button
+  const actions = document.querySelector(`#q-${cleanId(code)}-${i} .actions`);
+  if (actions && !actions.querySelector('.btn.retry')) {
+    const retryBtn = document.createElement('button');
+    retryBtn.className = 'btn retry';
+    retryBtn.textContent = '↺ Tekrar Dene';
+    retryBtn.onclick = () => retryQuestion(code, i);
+    actions.appendChild(retryBtn);
+  }
+}
+
+function showFeedback(code, i, msg, type) {
+  const fb = document.getElementById(`fb-${cleanId(code)}-${i}`);
+  if (fb) {
+    fb.textContent = msg;
+    fb.className = `feedback ${type} show`;
+    fb.style.whiteSpace = 'pre-line';
+  }
+}
+
+function showOpenAnswer(code, i) {
+  const ans = document.getElementById(`ans-${cleanId(code)}-${i}`);
+  if (ans) ans.classList.add('show');
+  setQuestionStatus(code, i, 'correct'); // open-ended otomatik "tamamlandı"
+  const fb = document.getElementById(`fb-${cleanId(code)}-${i}`);
+  if (fb) fb.style.display = 'block';
+  
+  const k = KAZANIMLAR.find(x => x.code === code);
+  let mc = 0;
+  for (let j = 0; j < k.questions.length; j++) {
+    if (getQuestionStatus(code, j) === 'correct') mc++;
+  }
+  const mcEl = document.getElementById('m-correct');
+  if (mcEl) mcEl.textContent = mc;
+}
+
+function retryQuestion(code, i) {
+  // Skoru SADECE BU SORU için sıfırla (yanlış olarak işaretliyse silinsin)
+  const p = getProgress();
+  delete p[`${code}_${i}`];
+  setProgress(p);
+  
+  // Soruyu yeniden render et
+  const k = KAZANIMLAR.find(x => x.code === code);
+  const qDiv = document.getElementById(`q-${cleanId(code)}-${i}`);
+  if (qDiv) {
+    qDiv.outerHTML = renderQuestion(code, i, k.questions[i]);
+  }
+  
+  // Modal skoru güncelle
+  let mc = 0;
+  for (let j = 0; j < k.questions.length; j++) {
+    if (getQuestionStatus(code, j) === 'correct') mc++;
+  }
+  const mcEl = document.getElementById('m-correct');
+  if (mcEl) mcEl.textContent = mc;
+}
+
+function closeModal() {
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+  renderGrid();
+  renderProgress();
+}
+
+function toggleReveal(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+// ============= CONFETTI (zor doğru cevapta) =============
+function triggerConfetti() {
+  const container = document.getElementById('confetti');
+  container.innerHTML = '';
+  container.classList.add('show');
+  const colors = ['#FF6B6B', '#4ECDC4', '#FFD93D', '#A78BFA', '#6BCB77'];
+  for (let i = 0; i < 40; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random() * 100 + '%';
+    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+    c.style.animationDelay = (Math.random() * 0.5) + 's';
+    c.style.animationDuration = (1.5 + Math.random()) + 's';
+    if (Math.random() > 0.5) c.style.borderRadius = '50%';
+    container.appendChild(c);
+  }
+  setTimeout(() => container.classList.remove('show'), 2500);
+}
+
+// ============= EVENTS =============
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Init
+renderProgress();
+renderGrid();
+</script>
+
+</body>
+</html>
